@@ -1,0 +1,8 @@
+﻿Entero,125,5,119
+Decimal,43,184,183
+Cadena,125,125,125
+Boolean,255,169,19
+Chart,92,59,37
+verdadero,255,169,19
+falso,255,169,19
+Verdadero,255,169,19
