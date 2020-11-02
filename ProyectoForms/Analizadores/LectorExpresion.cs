@@ -42,6 +42,10 @@ namespace ProyectoForms.Analizadores
         {
             String[] partes = linea.Split(" ");
             String lineaNueva = "";
+            if (linea.Equals(""))
+            {
+                return true;
+            }
             if (partes.Length > 2)
             {
                 lineaNueva += partes[1] + " " + partes[2] + " ";

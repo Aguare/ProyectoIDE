@@ -19,7 +19,6 @@ namespace ProyectoForms.Clases
         private String path;
         private String nombre;
 
-
         public PanelTexto(String nombre, String path)
         {
             InitializeComponent();
@@ -151,17 +150,7 @@ namespace ProyectoForms.Clases
                 List<String> datos = listas.obtenerDatos();
                 List<Color> colores = listas.obtenerColorDatos();
                 List<String> palabras = listas.obtenerPalabrasR();
-                foreach (String caracter in relacionales)
-                {
-                    int inicio = 0;
-                    while (inicio <= textEntrada.Text.LastIndexOf(caracter))
-                    {
-                        textEntrada.Find(caracter, inicio, textEntrada.TextLength, RichTextBoxFinds.WholeWord);
-                        textEntrada.SelectionColor = Color.Blue;
-                        inicio = textEntrada.Text.IndexOf(caracter, inicio) + 1;
-                    }
-                }
-                cambiarConfiguracion();
+                
                 foreach (String caracter in aritmeticos)
                 {
                     int inicio = 0;
@@ -172,7 +161,6 @@ namespace ProyectoForms.Clases
                         inicio = textEntrada.Text.IndexOf(caracter, inicio) + 1;
                     }
                 }
-                cambiarConfiguracion();
                 foreach (String caracter in asignacion)
                 {
                     int inicio = 0;
@@ -183,7 +171,16 @@ namespace ProyectoForms.Clases
                         inicio = textEntrada.Text.IndexOf(caracter, inicio) + 1;
                     }
                 }
-                cambiarConfiguracion();
+                foreach (String caracter in relacionales)
+                {
+                    int inicio = 0;
+                    while (inicio <= textEntrada.Text.LastIndexOf(caracter))
+                    {
+                        textEntrada.Find(caracter, inicio, textEntrada.TextLength, RichTextBoxFinds.WholeWord);
+                        textEntrada.SelectionColor = Color.Blue;
+                        inicio = textEntrada.Text.IndexOf(caracter, inicio) + 1;
+                    }
+                }
                 foreach (String caracter in datos)
                 {
                     int inicio = 0;
@@ -194,27 +191,38 @@ namespace ProyectoForms.Clases
                         inicio = textEntrada.Text.IndexOf(caracter, inicio) + 1;
                     }
                 }
-                cambiarConfiguracion();
+
                 foreach (String caracter in palabras)
                 {
+                    Color color = listas.obtenerColorPalabrasR();
                     int inicio = 0;
                     while (inicio <= textEntrada.Text.LastIndexOf(caracter))
                     {
                         textEntrada.Find(caracter, inicio, textEntrada.TextLength, RichTextBoxFinds.WholeWord);
-                        textEntrada.SelectionColor = listas.obtenerColorPalabrasR();
+                        textEntrada.SelectionColor = color;
                         inicio = textEntrada.Text.IndexOf(caracter, inicio) + 1;
-                    }
+                    }                  
                 }
                 foreach (Match expresion in Regex.Matches(textEntrada.Text, "[0-9]+"))
                 {
                     textEntrada.Select(textEntrada.Find(expresion.ToString()), expresion.ToString().Length);
                     textEntrada.SelectionColor = Color.FromArgb(125, 5, 119);
                 }
+                foreach (Match expresion in Regex.Matches(textEntrada.Text, "//.*?"))
+                {
+                    textEntrada.Select(textEntrada.Find(expresion.ToString()), expresion.ToString().Length);
+                    textEntrada.SelectionColor = Color.FromArgb(255, 0, 0);
+                }
+                foreach (Match expresion in Regex.Matches(textEntrada.Text, "/*.*?.*/"))
+                {
+                    textEntrada.Select(textEntrada.Find(expresion.ToString()), expresion.ToString().Length);
+                    textEntrada.SelectionColor = Color.FromArgb(255, 0, 0);
+                }               
                 foreach (Match expresion in Regex.Matches(textEntrada.Text, "\".*?\""))
                 {
                     textEntrada.Select(textEntrada.Find(expresion.ToString()), expresion.ToString().Length);
                     textEntrada.SelectionColor = Color.Gray;
-                }
+                }                
                 ResumeLayout();
                 cambiarConfiguracion();
             }

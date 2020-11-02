@@ -1,5 +1,4 @@
-﻿using InputKey;
-using ProyectoForms.Analizadores;
+﻿using ProyectoForms.Analizadores;
 using ProyectoForms.Clases;
 using ProyectoForms.EntradasTexto;
 using ProyectoForms.ManejoArchivos;
@@ -7,8 +6,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
+using InputKey;
 
 namespace ProyectoForms
 {
