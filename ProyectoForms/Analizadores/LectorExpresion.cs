@@ -215,9 +215,8 @@ namespace ProyectoForms.Analizadores
 
             List<Estado> estados8 = new List<Estado>();
             estados8.Add(new Estado("A", false, "comillas,B"));
-            estados8.Add(new Estado("B", false, "cualquiera,B"));
-            estados8.Add(new Estado("C", false, "cualquiera,C/comillas,D"));
-            estados8.Add(new Estado("D", true, "cualquiera,A"));
+            estados8.Add(new Estado("B", false, "cualquiera,B/comillas,C"));
+            estados8.Add(new Estado("C", true, ""));
             List<String> acepta8 = new List<string>();
             acepta8.Add("cualquiera");
             acepta8.Add("espa");

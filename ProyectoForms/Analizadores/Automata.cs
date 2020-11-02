@@ -159,6 +159,20 @@ namespace ProyectoForms.Analizadores
                         return true;
                     }
                     break;
+                case "slash":
+                    char slash = '/';
+                    if (caracter.Equals(slash))
+                    {
+                        return true;
+                    }
+                    break;
+                case "ast":
+                    char ast = '*';
+                    if (caracter.Equals(ast))
+                    {
+                        return true;
+                    }
+                    break;
                 default:
                     if (condicion.Equals(char.ToString(caracter)))
                     {
@@ -166,6 +180,7 @@ namespace ProyectoForms.Analizadores
                     }
                     break;
             }
+            esAnalizable = false;
             return false;
         }
 
