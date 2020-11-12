@@ -1,0 +1,32 @@
+1. Separar las entradas en tokens
+	******TIPO DE TOKENS******
+	Constantes de las Variables
+		Entero				1
+		Decimal 			2
+		Cadena				3
+		Boleano				4
+		Chart				5
+		Palabra Reservada	6
+		Variable			7
+		Variable Nombre		8
+
+	Operadores y Signos
+		Punto y coma 		9
+		Operador Lógico 	10
+		Operador Relacional 11
+		Operador Aritmético 12
+		Abre Parentesis		13
+		Cierra Parentesis	14
+		Signo igual 		15
+		Abre llaves			16
+		Cierra llaves		17
+
+	Palabras en Métodos
+		principal			18
+		imprimir			19
+		leer				20
+		comentario			21
+
+2. Reconocer el tipo de token generado
+3. Inicializa el analizador sintáctico con su gramática
+4. Generar lexemas y tabla de transiciones

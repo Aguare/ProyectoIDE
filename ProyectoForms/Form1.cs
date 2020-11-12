@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using InputKey;
+using System.Linq;
 
 namespace ProyectoForms
 {
@@ -40,16 +41,22 @@ namespace ProyectoForms
         private void buttonCompilar_Click(object sender, System.EventArgs e)
         {
             textErrores.Clear();
-            List<String> errores = new List<string>();
+            List<Token> tokens;
             foreach (PanelTexto panel in ventanas)
             {
-                errores = panel.compilar();
-                foreach (String linea in errores)
+                tokens = panel.Compilar();
+                foreach (Token token in tokens)
                 {
-                    textErrores.AppendText(linea + "\n");
+                    if (!token.obtenerAceptado())
+                    {
+                        textErrores.AppendText("Error en Linea: " + token.obtenerLinea() + " Columna: " + token.obtenerColumna() + "\n");
+                    }
+                    else
+                    {
+                        textErrores.AppendText("Tipo de Token: " + token.obtenerTipo() + " Contenido: " + token.obtenerContenido() + " F:" + token.obtenerLinea() + " C:" + token.obtenerColumna() + "\n");
+                    }
                 }
             }
-            
         }
 
         private void buttonCerrarArch_Click(object sender, System.EventArgs e)
@@ -65,7 +72,7 @@ namespace ProyectoForms
                 {
                     cerrarPestana(false);
                 }
-            }  
+            }
         }
 
         private void cerrarPestana(Boolean guardar)
@@ -82,7 +89,7 @@ namespace ProyectoForms
                         int cont = 0;
                         foreach (PanelTexto panel in ventanas)
                         {
-                            
+
                             if (cont == index)
                             {
                                 guardarUno(panel);

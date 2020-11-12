@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProyectoForms.Analizadores
 {
-    class Token
+    public class Token
     {
         private int tipo;
         private String contenido;
@@ -20,6 +20,29 @@ namespace ProyectoForms.Analizadores
             this.columna = columna;
             this.esAceptado = esAceptado;
         }
+        public Boolean obtenerAceptado()
+        {
+            return esAceptado;
+        }
 
+        public int obtenerLinea()
+        {
+           return linea;
+        }
+
+        public int obtenerColumna()
+        {
+            return columna;
+        }
+
+        public String obtenerContenido()
+        {
+            return contenido;
+        }
+
+        public int obtenerTipo()
+        {
+            return tipo;
+        }
     }
 }

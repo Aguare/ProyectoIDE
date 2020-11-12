@@ -12,7 +12,7 @@ namespace ProyectoForms.Analizadores
         //Atributos del automata
         private List<Estado> estados;
         private Boolean esAceptado = false;
-        private Boolean esAnalizable = true;
+        private Boolean seRompe = false;
         private List<String> abecedario;
         private Estado estadoActual;
         private String cadena = "";
@@ -25,6 +25,11 @@ namespace ProyectoForms.Analizadores
             this.listasAceptacion = listas;
         }
 
+        public String obtenerEstadoActual()
+        {
+            return estadoActual.obtenerNombre();
+        }
+
         public Boolean esAceptadoAutomata()
         {
             return esAceptado;
@@ -35,24 +40,21 @@ namespace ProyectoForms.Analizadores
             return cadena;
         }
 
+        public Boolean getRompe()
+        {
+            return seRompe;
+        }
+
         public void analizarCaracter(char caracter)
         {
-            if (esAnalizable)
+            foreach (Estado estado in estados)
             {
-                cadena += caracter;
-                foreach (Estado estado in estados)
+                if (estado.Equals(estadoActual))
                 {
-                    if (estado.Equals(estadoActual))
-                    {
-                        realizarTransicion(estado.obtenerNombre(), estado, caracter);
-                        break;
-                    }
+                    realizarTransicion(estado.obtenerNombre(), estado, caracter);
+                    break;
                 }
             }
-            else
-            {
-                esAceptado = false;
-            }            
         }
 
         private void realizarTransicion(String nombreEstado, Estado estado, char caracter)
@@ -67,9 +69,10 @@ namespace ProyectoForms.Analizadores
                 if (verificarEntrada(caracter, entrada))
                 {
                     estadoActual = buscarEstado(estadoResultante);
+                    cadena += caracter;
                     verificarEstadoAceptacion();
                     break;
-                }   
+                }
             }
         }
 
@@ -150,8 +153,6 @@ namespace ProyectoForms.Analizadores
                         }
                     }
                     break;
-                case "cualquiera":
-                    return true;
                 case "comillas":
                     char comi = '"';
                     if (caracter.Equals(comi))
@@ -173,6 +174,8 @@ namespace ProyectoForms.Analizadores
                         return true;
                     }
                     break;
+                case "cualquiera":
+                    return true;
                 default:
                     if (condicion.Equals(char.ToString(caracter)))
                     {
@@ -180,13 +183,8 @@ namespace ProyectoForms.Analizadores
                     }
                     break;
             }
-            esAnalizable = false;
+            seRompe = true;
             return false;
-        }
-
-        public void limpiarCadena()
-        {
-            cadena = "";
         }
 
         private Estado buscarEstado(String nombre)
