@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="InputKey">
-      <HintPath>D:\ProyectoIDE\ProyectoForms\ProyectoForms\Recursos\InputKey.dll</HintPath>
+      <HintPath>bin\Debug\netcoreapp3.1\InputKey.dll</HintPath>
     </Reference>
   </ItemGroup>
 

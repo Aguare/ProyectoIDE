@@ -5,4 +5,3 @@ Boolean,255,169,19
 Chart,92,59,37
 verdadero,255,169,19
 falso,255,169,19
-Verdadero,255,169,19

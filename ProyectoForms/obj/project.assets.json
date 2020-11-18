@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marco\\source\\repos\\ProyectoForms\\ProyectoForms\\ProyectoForms.csproj",
+      "projectUniqueName": "D:\\Proyectos LFP\\ProyectoIDE2\\ProyectoIDE\\ProyectoForms\\ProyectoForms.csproj",
       "projectName": "ProyectoForms",
-      "projectPath": "C:\\Users\\marco\\source\\repos\\ProyectoForms\\ProyectoForms\\ProyectoForms.csproj",
+      "projectPath": "D:\\Proyectos LFP\\ProyectoIDE2\\ProyectoIDE\\ProyectoForms\\ProyectoForms.csproj",
       "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marco\\source\\repos\\ProyectoForms\\ProyectoForms\\obj\\",
+      "outputPath": "D:\\Proyectos LFP\\ProyectoIDE2\\ProyectoIDE\\ProyectoForms\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -32,6 +32,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -43,6 +44,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -61,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

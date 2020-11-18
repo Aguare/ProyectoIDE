@@ -22,12 +22,26 @@ namespace ProyectoForms.ManejoArchivos
             RichTextBox text = panel.obtenerTexto();
             try
             {
-                text.SaveFile(path); 
+                text.SaveFile(path);
                 return true;
             }
             catch (Exception)
             {
-                MessageBox.Show("ERROR AL GUARDAR EL ARCHIVO: "+path);
+                MessageBox.Show("ERROR AL GUARDAR EL ARCHIVO: " + path);
+                return false;
+            }
+        }
+
+        public Boolean exportarErrores(RichTextBox errores, String path)
+        {
+            try
+            {
+                errores.SaveFile(path);
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL GUARDAR EL ARCHIVO: " + path);
                 return false;
             }
         }
@@ -40,7 +54,7 @@ namespace ProyectoForms.ManejoArchivos
                 text.LoadFile(path);
                 return text;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("ERROR AL CARGAR EL ARCHIVO");
             }
@@ -67,7 +81,7 @@ namespace ProyectoForms.ManejoArchivos
                 {
                     lista.Add(linea);
                 }
-                return lista;   
+                return lista;
             }
         }
 

@@ -36,7 +36,7 @@
             this.itemGuardarCambios = new System.Windows.Forms.ToolStripMenuItem();
             this.itemCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.itemEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemAyuda = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemErrores = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tablaControl = new System.Windows.Forms.TabControl();
             this.textErrores = new System.Windows.Forms.RichTextBox();
@@ -68,7 +68,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemArchivo,
-            this.itemAyuda});
+            this.itemErrores});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1163, 28);
@@ -128,11 +128,11 @@
             this.itemEliminar.Size = new System.Drawing.Size(329, 26);
             this.itemEliminar.Text = "Eliminar Proyecto";
             // 
-            // itemAyuda
+            // itemErrores
             // 
-            this.itemAyuda.Name = "itemAyuda";
-            this.itemAyuda.Size = new System.Drawing.Size(65, 24);
-            this.itemAyuda.Text = "Ayuda";
+            this.itemErrores.Name = "itemErrores";
+            this.itemErrores.Size = new System.Drawing.Size(129, 24);
+            this.itemErrores.Text = "Exportar Errores";
             // 
             // panel1
             // 
@@ -156,7 +156,7 @@
             this.tablaControl.Location = new System.Drawing.Point(11, 0);
             this.tablaControl.Name = "tablaControl";
             this.tablaControl.SelectedIndex = 0;
-            this.tablaControl.Size = new System.Drawing.Size(923, 530);
+            this.tablaControl.Size = new System.Drawing.Size(923, 490);
             this.tablaControl.TabIndex = 4;
             this.tablaControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tablaControl.SizeChanged += new System.EventHandler(this.tablaControl_SizeChanged);
@@ -168,9 +168,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textErrores.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textErrores.ForeColor = System.Drawing.Color.Red;
-            this.textErrores.Location = new System.Drawing.Point(11, 536);
+            this.textErrores.Location = new System.Drawing.Point(11, 496);
             this.textErrores.Name = "textErrores";
-            this.textErrores.Size = new System.Drawing.Size(923, 115);
+            this.textErrores.Size = new System.Drawing.Size(923, 155);
             this.textErrores.TabIndex = 2;
             this.textErrores.Text = "\n";
             // 
@@ -358,7 +358,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemCrear;
         private System.Windows.Forms.ToolStripMenuItem itemCerrar;
         private System.Windows.Forms.ToolStripMenuItem itemEliminar;
-        private System.Windows.Forms.ToolStripMenuItem itemAyuda;
+        private System.Windows.Forms.ToolStripMenuItem itemErrores;
         private System.Windows.Forms.TabControl tablaControl;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton buttonCrear;
