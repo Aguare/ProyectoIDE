@@ -6,43 +6,21 @@ namespace ProyectoForms.Analizadores
 {
     public class Token
     {
-        private int tipo;
-        private String contenido;
-        private int linea;
-        private int columna;
-        private Boolean esAceptado;
+        public String tipoToken { get; set; }
+        public String contenido { get; set; }
+        public int fila { get; set; }
+        public int columna { get; set; }
+        public int posicionToken { get; set; }
+        public Boolean aceptado { get; set; }
 
-        public Token(int tipo, string contenido, int linea, int columna, bool esAceptado)
+        public Token(String tipoToken, string contenido, int fila, int columna, int posicionToken)
         {
-            this.tipo = tipo;
+            this.tipoToken = tipoToken;
             this.contenido = contenido;
-            this.linea = linea;
+            this.fila = fila;
             this.columna = columna;
-            this.esAceptado = esAceptado;
-        }
-        public Boolean obtenerAceptado()
-        {
-            return esAceptado;
-        }
-
-        public int obtenerLinea()
-        {
-           return linea;
-        }
-
-        public int obtenerColumna()
-        {
-            return columna;
-        }
-
-        public String obtenerContenido()
-        {
-            return contenido;
-        }
-
-        public int obtenerTipo()
-        {
-            return tipo;
+            this.posicionToken = posicionToken;
+            this.aceptado = false;
         }
     }
 }

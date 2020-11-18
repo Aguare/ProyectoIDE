@@ -9,6 +9,7 @@ using System.IO;
 using System.Windows.Forms;
 using InputKey;
 using System.Linq;
+using ProyectoForms.Sintactico;
 
 namespace ProyectoForms
 {
@@ -30,6 +31,7 @@ namespace ProyectoForms
         private void iniciarEventos()
         {
             itemAbrir.Click += new System.EventHandler(this.itemAbrir_Click);
+            itemErrores.Click += new System.EventHandler(this.itemErrores_Click);
             itemCrear.Click += new System.EventHandler(this.itemCrear_Click);
             itemGuardarCambios.Click += new System.EventHandler(this.buttonGuardar_Click);
             buttonCrear.Click += new System.EventHandler(this.buttonCrear_Click);
@@ -40,21 +42,21 @@ namespace ProyectoForms
 
         private void buttonCompilar_Click(object sender, System.EventArgs e)
         {
+
             textErrores.Clear();
-            List<Token> tokens;
             foreach (PanelTexto panel in ventanas)
             {
-                tokens = panel.Compilar();
-                foreach (Token token in tokens)
+                List<Token> tokensInvalidos = panel.Compilar();
+                AnalizadorSintactico analizar = new AnalizadorSintactico(panel.obtenerTokensValidos());
+                for (int i = 0; i < tokensInvalidos.Count; i++)
                 {
-                    if (!token.obtenerAceptado())
-                    {
-                        textErrores.AppendText("Error en Linea: " + token.obtenerLinea() + " Columna: " + token.obtenerColumna() + "\n");
-                    }
-                    else
-                    {
-                        textErrores.AppendText("Tipo de Token: " + token.obtenerTipo() + " Contenido: " + token.obtenerContenido() + " F:" + token.obtenerLinea() + " C:" + token.obtenerColumna() + "\n");
-                    }
+                    textErrores.AppendText("Error Lexico: " + tokensInvalidos[i].contenido + " Fila:" + tokensInvalidos[i].fila + " Columna:" + tokensInvalidos[i].columna + "\n");
+                    //textErrores.AppendText("Acepta: " + tokensInvalidos[i].contenido + " F:" + tokensInvalidos[i].fila + " C:" + tokensInvalidos[i].columna + " Tipo:" + tokensInvalidos[i].tipoToken + "\n");                  
+                }
+                List<String> errores = analizar.analizarTokens();
+                foreach (String error in errores)
+                {
+                    textErrores.AppendText(error + "\n");
                 }
             }
         }
@@ -178,6 +180,27 @@ namespace ProyectoForms
             if (crear.isCreado())
             {
                 llenarArbol(crear.obtenerPath());
+            }
+        }
+
+        private void itemErrores_Click(object sender, System.EventArgs e)
+        {
+            if (pathProyecto != null)
+            {
+                String nombre = InputDialog.mostrar("Ingrese el nombre del archivo de errores") + ".gtE";
+                String path = pathProyecto + "\\" + nombre;
+                if (archivos.existeArchivoCreado(nombre, pathProyecto))
+                {
+                    MessageBox.Show("El DOCUMENTO YA EXISTE");
+                }
+                else
+                {
+                    archivos.exportarErrores(textErrores, path);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe tener algún Proyecto Abierto");
             }
         }
 

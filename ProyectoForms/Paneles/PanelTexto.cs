@@ -15,15 +15,16 @@ namespace ProyectoForms.Clases
     public partial class PanelTexto : UserControl
     {
         private ListasAceptacion listas = new ListasAceptacion();
-        private LectorExpresion lector;
         private String path;
         private String nombre;
+        private ManejadorCodigo manejador;
 
         public PanelTexto(String nombre, String path)
         {
             InitializeComponent();
             this.path = path;
             this.nombre = nombre;
+            manejador = new ManejadorCodigo(this);
         }
 
         public PanelTexto(String nombre, String path, Boolean cargar)
@@ -32,14 +33,16 @@ namespace ProyectoForms.Clases
             this.path = path;
             this.nombre = nombre;
             cargarArchivo();
+            manejador = new ManejadorCodigo(this);
         }
 
         public List<Token> Compilar()
         {
             cambiarColores();
-            lector = new LectorExpresion();
-            lector.generarTokensCodigo(textEntrada.Lines);
-            return lector.obtenerTokenLista();
+            manejador.recibirCodigo(textEntrada.Text);
+            manejador.ejecutarManejador();
+            return manejador.obtenerTokensInvalidos();
+            //return manejador.obtenerTokensValidos();
         }
 
         private void cambiarConfiguracion()
@@ -63,6 +66,11 @@ namespace ProyectoForms.Clases
         public String obtenerPath()
         {
             return path;
+        }
+
+        public List<Token> obtenerTokensValidos()
+        {
+            return manejador.obtenerTokensValidos();
         }
 
         public String obtenerNombre()
